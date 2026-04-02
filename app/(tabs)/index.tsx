@@ -1,46 +1,201 @@
-import { ScrollView, Text, View, TouchableOpacity } from "react-native";
+import { ScrollView, Text, View, TouchableOpacity, Alert } from 'react-native';
+import { useRouter } from 'expo-router';
+import { ScreenContainer } from '@/components/screen-container';
+import { useAuth } from '@/lib/auth-context';
+import { useWellness } from '@/lib/wellness-context';
+import { useColors } from '@/hooks/use-colors';
+import { cn } from '@/lib/utils';
 
-import { ScreenContainer } from "@/components/screen-container";
-
-/**
- * Home Screen - NativeWind Example
- *
- * This template uses NativeWind (Tailwind CSS for React Native).
- * You can use familiar Tailwind classes directly in className props.
- *
- * Key patterns:
- * - Use `className` instead of `style` for most styling
- * - Theme colors: use tokens directly (bg-background, text-foreground, bg-primary, etc.); no dark: prefix needed
- * - Responsive: standard Tailwind breakpoints work on web
- * - Custom colors defined in tailwind.config.js
- */
 export default function HomeScreen() {
+  const router = useRouter();
+  const { user } = useAuth();
+  const { getTodayMood, startSession } = useWellness();
+  const colors = useColors();
+  const todayMood = getTodayMood();
+
+  const handleStartSession = async () => {
+    if (!user) return;
+
+    if (user.totalSessions <= 0) {
+      Alert.alert(
+        'No Sessions Available',
+        'You have used all your sessions. Upgrade to continue.',
+        [
+          { text: 'Cancel', onPress: () => {} },
+              { text: 'Upgrade', onPress: () => router.push('./chat') },
+        ]
+      );
+      return;
+    }
+
+    try {
+      await startSession();
+      router.push('/(tabs)/chat');
+    } catch (error) {
+      Alert.alert('Error', 'Failed to start session');
+    }
+  };
+
+  const emotionEmoji: Record<string, string> = {
+    happy: '😊',
+    sad: '😢',
+    anxious: '😰',
+    calm: '😌',
+    angry: '😠',
+    peaceful: '🧘',
+    hopeful: '🌟',
+    overwhelmed: '😵',
+  };
+
   return (
-    <ScreenContainer className="p-6">
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View className="flex-1 gap-8">
-          {/* Hero Section */}
-          <View className="items-center gap-2">
-            <Text className="text-4xl font-bold text-foreground">Welcome</Text>
-            <Text className="text-base text-muted text-center">
-              Edit app/(tabs)/index.tsx to get started
+    <ScreenContainer className="bg-background">
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+        <View className="px-6 py-8 gap-8">
+          {/* Welcome Header */}
+          <View>
+            <Text className="text-3xl font-bold text-primary mb-2">
+              Welcome back, {user?.name?.split(' ')[0]}
+            </Text>
+            <Text className="text-base text-muted">
+              Your wellness journey continues here
             </Text>
           </View>
 
-          {/* Example Card */}
-          <View className="w-full max-w-sm self-center bg-surface rounded-2xl p-6 shadow-sm border border-border">
-            <Text className="text-lg font-semibold text-foreground mb-2">NativeWind Ready</Text>
-            <Text className="text-sm text-muted leading-relaxed">
-              Use Tailwind CSS classes directly in your React Native components.
-            </Text>
+          {/* Session Counter Card */}
+          <View className="bg-gradient-to-br from-primary to-success rounded-2xl p-6 shadow-sm">
+            <Text className="text-sm font-medium text-white opacity-80 mb-2">Sessions Available</Text>
+            <View className="flex-row items-baseline gap-2 mb-4">
+              <Text className="text-5xl font-bold text-white">{user?.totalSessions || 0}</Text>
+              <Text className="text-lg text-white opacity-70">sessions</Text>
+            </View>
+            <View className="bg-white bg-opacity-20 rounded-full h-2 overflow-hidden">
+              <View
+                className="bg-white h-full"
+                style={{
+                  width: `${((user?.totalSessions || 0) / 10) * 100}%`,
+                }}
+              />
+            </View>
+            {user?.freeSessions && user.freeSessions > 0 && (
+              <Text className="text-xs text-white opacity-70 mt-3">
+                {user.freeSessions} free sessions remaining
+              </Text>
+            )}
           </View>
 
-          {/* Example Button */}
-          <View className="items-center">
-            <TouchableOpacity className="bg-primary px-6 py-3 rounded-full active:opacity-80">
-              <Text className="text-background font-semibold">Get Started</Text>
+          {/* Today's Mood */}
+          {todayMood && (
+            <View className="bg-surface rounded-xl p-4 border border-border">
+              <Text className="text-xs font-medium text-muted uppercase tracking-wider mb-3">
+                Today's Mood
+              </Text>
+              <View className="flex-row items-center gap-3">
+                <Text className="text-4xl">{emotionEmoji[todayMood.emotion] || '😊'}</Text>
+                <View className="flex-1">
+                  <Text className="text-base font-semibold text-foreground capitalize">
+                    {todayMood.emotion}
+                  </Text>
+                  <Text className="text-sm text-muted">
+                    Intensity: {todayMood.intensity}/10
+                  </Text>
+                </View>
+              </View>
+            </View>
+          )}
+
+          {/* Quick Actions */}
+          <View className="gap-3">
+            {/* Start Session Button */}
+            <TouchableOpacity
+              className={cn(
+                'bg-primary rounded-xl py-4 px-6 flex-row items-center justify-between',
+                user?.totalSessions === 0 && 'opacity-60'
+              )}
+              onPress={handleStartSession}
+              disabled={user?.totalSessions === 0}
+            >
+              <View>
+                <Text className="text-white font-semibold text-base">Start Wellness Session</Text>
+                <Text className="text-white text-xs opacity-80">30 minutes of AI support</Text>
+              </View>
+              <Text className="text-2xl">→</Text>
+            </TouchableOpacity>
+
+            {/* Log Mood Button */}
+            <TouchableOpacity
+              className="bg-surface border border-border rounded-xl py-4 px-6 flex-row items-center justify-between"
+              onPress={() => router.push('./mood')}
+            >
+              <View>
+                <Text className="text-foreground font-semibold text-base">Log Your Mood</Text>
+                <Text className="text-muted text-xs">How are you feeling today?</Text>
+              </View>
+              <Text className="text-2xl">→</Text>
+            </TouchableOpacity>
+
+            {/* Journal Button */}
+            <TouchableOpacity
+              className="bg-surface border border-border rounded-xl py-4 px-6 flex-row items-center justify-between"
+              onPress={() => router.push('./journal')}
+            >
+              <View>
+                <Text className="text-foreground font-semibold text-base">Write in Journal</Text>
+                <Text className="text-muted text-xs">Express your thoughts</Text>
+              </View>
+              <Text className="text-2xl">→</Text>
+            </TouchableOpacity>
+
+            {/* Resources Button */}
+            <TouchableOpacity
+              className="bg-surface border border-border rounded-xl py-4 px-6 flex-row items-center justify-between"
+              onPress={() => router.push('./resources')}
+            >
+              <View>
+                <Text className="text-foreground font-semibold text-base">Browse Resources</Text>
+                <Text className="text-muted text-xs">Meditation, tips, and more</Text>
+              </View>
+              <Text className="text-2xl">→</Text>
             </TouchableOpacity>
           </View>
+
+          {/* Stats Section */}
+          <View className="gap-3">
+            <Text className="text-xs font-medium text-muted uppercase tracking-wider">
+              Your Progress
+            </Text>
+            <View className="flex-row gap-3">
+              <View className="flex-1 bg-surface rounded-lg p-4 border border-border items-center">
+                <Text className="text-2xl font-bold text-primary mb-1">
+                  {user?.totalSessions || 0}
+                </Text>
+                <Text className="text-xs text-muted text-center">Total Sessions</Text>
+              </View>
+              <View className="flex-1 bg-surface rounded-lg p-4 border border-border items-center">
+                <Text className="text-2xl font-bold text-success mb-1">
+                  {todayMood ? '✓' : '—'}
+                </Text>
+                <Text className="text-xs text-muted text-center">Mood Logged</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Upgrade CTA - Show if no sessions left */}
+          {user?.totalSessions === 0 && (
+            <View className="bg-warning bg-opacity-10 rounded-xl p-4 border border-warning border-opacity-30">
+              <Text className="text-sm font-semibold text-foreground mb-2">
+                Ready to continue your wellness journey?
+              </Text>
+              <Text className="text-xs text-muted mb-4">
+                Upgrade to unlock unlimited sessions and premium features.
+              </Text>
+              <TouchableOpacity
+                className="bg-warning rounded-lg py-2 px-4 items-center"
+                onPress={() => router.push('/(tabs)/chat')}
+              >
+                <Text className="text-white font-semibold text-sm">Upgrade Now</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </ScrollView>
     </ScreenContainer>

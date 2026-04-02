@@ -1,0 +1,198 @@
+# AI Wellness Companion - Project TODO
+
+## Phase 1: Core Authentication & Onboarding
+
+- [x] Splash screen with app branding and loading state
+- [x] Welcome screen with app introduction and value proposition
+- [x] Sign up screen with email/password registration
+- [x] Login screen with email/password authentication
+- [ ] Onboarding flow with mental health context questions
+- [x] Privacy acknowledgment and consent screen
+- [x] Session allocation (3 free sessions on signup)
+- [x] User profile creation and storage
+
+## Phase 2: Home Dashboard & Navigation
+
+- [x] Home dashboard layout with session counter
+- [x] Tab bar navigation (Home, Chat, Mood, Journal, Resources, Profile)
+- [x] Session status display (X of Y sessions remaining)
+- [x] Quick stats display (total sessions, streak, last check-in)
+- [x] Primary CTA buttons (Start Session, Log Mood, Journal, Resources)
+- [x] Theme colors implementation (forest, moss, sage, amber palette)
+- [ ] Dark mode support
+- [x] Bottom tab bar with icons
+
+## Phase 3: AI Chat Session Feature
+
+- [x] AI chat screen layout with message history
+- [x] Real-time message input and submission
+- [x] Session timer (30-minute countdown)
+- [x] Message streaming and display
+- [x] Session controls (pause, end, help)
+- [x] Session auto-end when timer expires
+- [ ] Session summary after completion
+- [x] Conversation history storage
+- [ ] Crisis detection and escalation pathway
+- [x] Crisis resources display (hotline, text line, emergency)
+
+## Phase 4: Session Paywall & Monetization
+
+- [ ] Session paywall screen design
+- [ ] Pricing options display ($5 single, $15 monthly, $99 annual)
+- [ ] INR pricing display (₹500, ₹1,500, ₹9,900)
+- [ ] Payment gateway integration (Stripe or similar)
+- [ ] Secure payment processing
+- [ ] Session credit allocation after purchase
+- [ ] Subscription status tracking
+- [ ] Upgrade/downgrade functionality
+- [ ] Payment history display
+- [ ] Ad integration for free users (Google AdMob)
+- [ ] Ad placement in home, resources, and paywall screens
+- [ ] Rewarded video ads for bonus session credit
+
+## Phase 5: Mood Tracking
+
+- [x] Mood tracker screen with emotion wheel
+- [x] 8 primary emotions (happy, sad, anxious, calm, angry, peaceful, hopeful, overwhelmed)
+- [x] Intensity slider (1-10 scale)
+- [x] Optional mood note field
+- [x] Mood history storage (daily limit)
+- [x] 7-day mood chart visualization
+- [ ] Mood-based insights and recommendations
+- [ ] Mood export functionality
+- [x] Mood data persistence
+
+## Phase 6: Journaling Feature
+
+- [x] Journaling screen with rich text editor
+- [x] Date/time stamp for entries
+- [x] Optional emotion tag selection
+- [x] Save/publish toggle for privacy
+- [ ] AI-generated reflection prompt
+- [x] Previous journal entries list
+- [ ] Auto-save draft functionality
+- [ ] Full-text search in journals
+- [ ] Journal entry deletion
+- [ ] Journal data encryption
+
+## Phase 7: Resources Library
+
+- [x] Resources library screen layout
+- [x] Resource categories (Meditation, Coping Techniques, Self-Care, Crisis, Professional)
+- [x] Resource cards with title, description, category
+- [x] Search and filter functionality
+- [ ] Bookmarks/favorites feature
+- [ ] Audio playback for meditations
+- [ ] Video playback for techniques
+- [ ] Offline access to core resources
+- [ ] Resource sharing capability
+- [x] Ad placement between categories
+- [ ] Resource recommendations based on mood
+
+## Phase 8: Profile & Settings
+
+- [x] Profile screen with user info display
+- [ ] User avatar upload
+- [x] Subscription status display
+- [x] Session usage statistics
+- [ ] Privacy & data controls
+- [ ] Notification preferences
+- [ ] App theme toggle (light/dark)
+- [ ] Language selection
+- [x] About & Legal section (Privacy Policy, Terms)
+- [ ] Data export functionality
+- [ ] Account deletion option
+- [x] Logout functionality
+
+## Phase 9: Session History & Analytics
+
+- [ ] Session history screen with past conversations
+- [ ] Session date, duration, and summary display
+- [ ] Session insights and key takeaways
+- [ ] Ability to view past session transcripts
+- [ ] Session statistics (total sessions, average duration)
+- [ ] Mood trends visualization
+- [ ] Engagement metrics dashboard
+
+## Phase 10: Crisis Support & Safety
+
+- [ ] Crisis support screen with emergency resources
+- [ ] Crisis hotline numbers (US, UK, India, etc.)
+- [ ] Crisis text line information
+- [ ] Emergency services (911) quick access
+- [ ] Safety plan creation tool
+- [ ] Trusted contacts feature
+- [ ] Crisis detection in AI conversations
+- [ ] Automatic escalation when crisis detected
+- [ ] Safety review flagging for conversations
+
+## Phase 11: Accessibility & Localization
+
+- [ ] WCAG 2.1 AA compliance audit
+- [ ] Screen reader support testing
+- [ ] Large text mode (up to 200% scaling)
+- [ ] Simplified UI mode option
+- [ ] Low-bandwidth mode for 2G
+- [ ] Keyboard navigation support
+- [ ] High contrast mode support
+- [ ] Localization for South Asian, East Asian, African contexts
+- [ ] Translation infrastructure setup
+
+## Phase 12: Testing & Quality Assurance
+
+- [ ] Unit tests for auth logic
+- [ ] Unit tests for session management
+- [ ] Unit tests for mood tracking
+- [ ] Integration tests for payment flow
+- [ ] End-to-end testing of user flows
+- [ ] Crisis detection testing
+- [ ] Performance testing (load times, battery usage)
+- [ ] Security testing (data encryption, API security)
+- [ ] Accessibility testing (screen readers, keyboard)
+- [ ] Cross-platform testing (iOS, Android, Web)
+- [ ] User acceptance testing
+
+## Phase 13: Deployment & Launch
+
+- [ ] App store submission (Apple App Store)
+- [ ] Google Play Store submission
+- [ ] Web version deployment
+- [ ] Privacy policy finalization
+- [ ] Terms of service finalization
+- [ ] HIPAA compliance verification
+- [ ] Data protection compliance (GDPR, CCPA)
+- [ ] Launch marketing materials
+- [ ] User onboarding documentation
+- [ ] Support documentation
+
+## Phase 14: Post-Launch & Optimization
+
+- [ ] Monitor app performance and crashes
+- [ ] Analyze user engagement metrics
+- [ ] Gather user feedback
+- [ ] A/B test paywall messaging
+- [ ] Optimize ad placements and revenue
+- [ ] Iterate on AI conversation quality
+- [ ] Expand resource library
+- [ ] Add community features (future)
+- [ ] Integrate professional support directory (future)
+- [ ] Add wearable integration (future)
+
+## Known Issues & Bugs
+
+- [ ] (None identified yet - will be updated as development progresses)
+
+## Notes
+
+- Session limit: 30 minutes per session
+- Free sessions: 3 at signup
+- Paid session: $5 USD / ₹500 INR
+- Monthly subscription: $15 USD / ₹1,500 INR (10 sessions)
+- Annual subscription: $99 USD / ₹9,900 INR (unlimited)
+- Maximum 1 session per day
+- Minimum 15 minutes between sessions
+- Ad-free experience for paid users
+- Crisis pathways must lead to real human support
+- App is wellness tool, not medical device
+- All data encrypted and private
+- No data sharing with third parties
