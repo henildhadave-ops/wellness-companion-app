@@ -1,5 +1,5 @@
 import { ScrollView, Text, View, TouchableOpacity, Alert, Animated } from 'react-native';
-import { useRouter, useLocalSearchParams } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { ScreenContainer } from '@/components/screen-container';
 import { usePMR } from '@/lib/pmr-context';
 import { useState, useEffect, useRef } from 'react';
@@ -30,64 +30,71 @@ export default function PMRDetailScreen() {
     }
   }, [sessionInitialized, currentSession, startSession]);
 
-  // Breathing animation
+  // Breathing animation - synced with phase duration
   useEffect(() => {
-    if (phase === 'tense') {
+    if (phase === 'tense' && currentMuscle) {
       Animated.timing(breatheScale, {
         toValue: 1.3,
-        duration: 5000,
+        duration: currentMuscle.tenseDuration * 1000,
         useNativeDriver: true,
       }).start();
-    } else if (phase === 'release') {
+    } else if (phase === 'release' && currentMuscle) {
       Animated.timing(breatheScale, {
         toValue: 1,
-        duration: 7000,
+        duration: currentMuscle.releaseDuration * 1000,
         useNativeDriver: true,
       }).start();
     }
-  }, [phase, breatheScale]);
+  }, [phase, breatheScale, currentMuscle]);
 
   // Muscle glow animation
   useEffect(() => {
-    if (phase === 'tense') {
+    if (phase === 'tense' && currentMuscle) {
       Animated.timing(muscleGlow, {
         toValue: 1,
-        duration: 5000,
+        duration: currentMuscle.tenseDuration * 1000,
         useNativeDriver: true,
       }).start();
-    } else if (phase === 'release') {
+    } else if (phase === 'release' && currentMuscle) {
       Animated.timing(muscleGlow, {
         toValue: 0,
-        duration: 7000,
+        duration: currentMuscle.releaseDuration * 1000,
         useNativeDriver: true,
       }).start();
     }
-  }, [phase, muscleGlow]);
+  }, [phase, muscleGlow, currentMuscle]);
 
-  // Timer effect
+  // Timer effect - handles phase transitions with correct timing
   useEffect(() => {
-    if (!isRunning || !currentMuscle) return;
+    if (!isRunning || !currentMuscle || phase === 'idle') return;
 
     const interval = setInterval(() => {
       setTimeRemaining((prev) => {
-        if (prev <= 1) {
-          // Move to next phase
+        const newTime = prev - 1;
+
+        if (newTime <= 0) {
+          // Transition to next phase
           if (phase === 'tense') {
             setPhase('release');
-            setTimeRemaining(currentMuscle.releaseDuration);
+            return currentMuscle.releaseDuration;
           } else if (phase === 'release') {
             setPhase('rest');
-            setTimeRemaining(currentMuscle.restDuration);
+            return currentMuscle.restDuration;
           } else if (phase === 'rest') {
-            // Move to next muscle
-            moveToNextMuscle();
-            setPhase('tense');
-            const nextMuscle = muscleGroups[currentSession?.currentMuscleIndex! + 1];
-            setTimeRemaining(nextMuscle?.tenseDuration || 0);
+            // Check if there's a next muscle group
+            if (currentSession && currentSession.currentMuscleIndex < muscleGroups.length - 1) {
+              moveToNextMuscle();
+              setPhase('tense');
+              const nextMuscle = muscleGroups[currentSession.currentMuscleIndex + 1];
+              return nextMuscle.tenseDuration;
+            } else {
+              // Session complete
+              setIsRunning(false);
+              return 0;
+            }
           }
-          return 0;
         }
-        return prev - 1;
+        return newTime;
       });
     }, 1000);
 
@@ -95,9 +102,9 @@ export default function PMRDetailScreen() {
   }, [isRunning, phase, currentMuscle, currentSession, moveToNextMuscle, muscleGroups]);
 
   const handleStartExercise = async () => {
-    if (currentSession) {
+    if (currentSession && currentMuscle) {
       setPhase('tense');
-      setTimeRemaining(currentMuscle?.tenseDuration || 0);
+      setTimeRemaining(currentMuscle.tenseDuration);
       setIsRunning(true);
     }
   };
@@ -213,7 +220,7 @@ export default function PMRDetailScreen() {
   }
 
   // Exercise in progress
-  if (isRunning) {
+  if (isRunning && (phase === 'tense' || phase === 'release' || phase === 'rest')) {
     return (
       <ScreenContainer className="bg-background">
         <View className="flex-1 flex-col">
@@ -239,7 +246,7 @@ export default function PMRDetailScreen() {
                   <Text className="text-6xl">🫁</Text>
                 </Animated.View>
                 <Text className="text-lg font-semibold text-primary capitalize">
-                  {phase === 'idle' ? 'Ready' : phase}
+                  {phase}
                 </Text>
               </View>
 

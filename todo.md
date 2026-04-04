@@ -249,3 +249,11 @@
 - [x] Add PMR exercise to Resources tab with modal launcher
 - [x] Create vitest tests for PMR functionality (27 tests passing)
 - [x] Remove breathing tab from navigation entirely
+
+
+## Phase 14: Fix PMR Timing and Remove Breathing Tab
+
+- [x] Remove breathing tab from tab navigation
+- [x] Fix PMR timing for each muscle group phase (5s tense, 7s release, 3s rest)
+- [x] Update PMR context with correct durations for all 6 muscle groups
+- [x] Test PMR timing accuracy (all 61 tests passing)
