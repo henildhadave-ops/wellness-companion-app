@@ -43,13 +43,6 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="breathing"
-        options={{
-          title: "Breathe",
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="wind" color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name="mood"
         options={{
           title: "Mood",

@@ -222,3 +222,13 @@
 - [ ] Implement audio guidance for breathing (optional)
 - [x] Add ability to save favorite exercises
 - [ ] Create quick access to exercises from home screen
+
+
+## Phase 12: Refactor - Integrate Breathing into Resources
+
+- [x] Remove separate "Breathe" tab from navigation
+- [x] Add breathing exercises and grounding techniques to Resources tab
+- [x] Create category filter for Resources (Meditation, Coping, Self-Care, Breathing, Grounding, Crisis, Professional)
+- [x] Update Resources screen to display breathing exercises as cards
+- [x] Add modal/navigation to launch breathing exercises from Resources
+- [x] Update Resources UI to show all exercise types
