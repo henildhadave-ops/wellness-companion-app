@@ -196,3 +196,15 @@
 - App is wellness tool, not medical device
 - All data encrypted and private
 - No data sharing with third parties
+
+
+## Phase 10: AI Integration & Crisis Detection
+
+- [x] Create tRPC endpoint for wellness chat with LLM
+- [x] Implement system prompt for empathetic mental health support
+- [x] Add crisis keyword detection in user messages
+- [x] Implement crisis escalation pathway with resources
+- [x] Add conversation context management (session history)
+- [ ] Implement message streaming for real-time responses
+- [x] Add safety guidelines and content filtering
+- [ ] Test crisis detection with various scenarios

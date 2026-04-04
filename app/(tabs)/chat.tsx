@@ -3,7 +3,8 @@ import { useRouter } from 'expo-router';
 import { ScreenContainer } from '@/components/screen-container';
 import { useAuth } from '@/lib/auth-context';
 import { useWellness } from '@/lib/wellness-context';
-import { useState, useEffect } from 'react';
+import { trpc } from '@/lib/trpc';
+import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 export default function ChatScreen() {
@@ -15,6 +16,12 @@ export default function ChatScreen() {
   const [timeRemaining, setTimeRemaining] = useState(30 * 60); // 30 minutes in seconds
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [showCrisisAlert, setShowCrisisAlert] = useState(false);
+  const [crisisResources, setCrisisResources] = useState<any>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
+
+  // tRPC mutation for wellness chat
+  const wellnessChatMutation = trpc.wellness.chat.useMutation();
 
   // Timer effect
   useEffect(() => {
@@ -32,6 +39,11 @@ export default function ChatScreen() {
 
     return () => clearInterval(interval);
   }, [sessionActive]);
+
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    scrollViewRef.current?.scrollToEnd({ animated: true });
+  }, [messages]);
 
   const handleStartSession = async () => {
     if (!user || user.totalSessions <= 0) {
@@ -73,7 +85,7 @@ export default function ChatScreen() {
     const userMessage = messageText;
     setMessageText('');
 
-    // Add user message
+    // Add user message to display
     const updatedMessages = [
       ...messages,
       { role: 'user' as const, content: userMessage },
@@ -83,28 +95,33 @@ export default function ChatScreen() {
     setIsLoading(true);
 
     try {
-      // Simulate AI response (in production, this would call an AI API)
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Call real AI endpoint via tRPC
+      const result = await wellnessChatMutation.mutateAsync({
+        messages: updatedMessages,
+        sessionId: currentSession?.id,
+      });
 
-      const aiResponses = [
-        "That sounds important. Can you tell me more about what you're experiencing?",
-        "I hear you. It's completely normal to feel that way. What do you think might help?",
-        "Thank you for sharing that with me. How does that make you feel?",
-        "I appreciate your openness. What would be most helpful for you right now?",
-        "That's a valid concern. Let's explore this together. What's one thing you could do today?",
-      ];
-
-      const aiResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
-
-      setMessages([
-        ...updatedMessages,
-        { role: 'assistant', content: aiResponse },
+      // Add AI response
+      const responseContent = typeof result.response === 'string' ? result.response : 'I understand. Please tell me more.';
+      setMessages((prev) => [
+        ...prev,
+        { role: 'assistant', content: responseContent },
       ]);
 
+      // Check for crisis indicators
+      if (result.hasCrisisIndicators && result.crisisResources) {
+        setCrisisResources(result.crisisResources);
+        setShowCrisisAlert(true);
+      }
+
+      // Store in session history
       await addSessionMessage('user', userMessage);
-      await addSessionMessage('assistant', aiResponse);
+      await addSessionMessage('assistant', responseContent);
     } catch (error) {
-      Alert.alert('Error', 'Failed to send message');
+      console.error('Error sending message:', error);
+      Alert.alert('Error', 'Failed to send message. Please try again.');
+      // Remove the user message if there was an error
+      setMessages((prev) => prev.slice(0, -1));
     } finally {
       setIsLoading(false);
     }
@@ -125,7 +142,7 @@ export default function ChatScreen() {
               <Text className="text-5xl">🧘</Text>
               <Text className="text-3xl font-bold text-primary text-center">Start a Wellness Session</Text>
               <Text className="text-base text-muted text-center leading-relaxed">
-                Connect with your AI wellness companion for a 30-minute supportive conversation.
+                Connect with your AI wellness companion for a 30-minute supportive conversation powered by advanced AI.
               </Text>
             </View>
 
@@ -136,6 +153,7 @@ export default function ChatScreen() {
                 <Text className="text-sm text-muted">✓ Safe space to express your feelings</Text>
                 <Text className="text-sm text-muted">✓ Practical coping strategies</Text>
                 <Text className="text-sm text-muted">✓ Your privacy is always protected</Text>
+                <Text className="text-sm text-muted">✓ Powered by real AI technology</Text>
               </View>
             </View>
 
@@ -178,11 +196,33 @@ export default function ChatScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* Crisis Alert */}
+        {showCrisisAlert && crisisResources && (
+          <View className="bg-error bg-opacity-10 px-4 py-3 border-b border-error border-opacity-30">
+            <Text className="text-sm font-semibold text-error mb-2">{crisisResources.title}</Text>
+            <Text className="text-xs text-foreground mb-3">{crisisResources.message}</Text>
+            <View className="gap-2">
+              {crisisResources.resources.map((resource: any, idx: number) => (
+                <TouchableOpacity key={idx} className="bg-error bg-opacity-20 rounded-lg p-2">
+                  <Text className="text-xs font-semibold text-error">{resource.name}</Text>
+                  {resource.phone && <Text className="text-xs text-foreground">{resource.phone}</Text>}
+                  {resource.text && <Text className="text-xs text-foreground">{resource.text}</Text>}
+                </TouchableOpacity>
+              ))}
+            </View>
+            <TouchableOpacity onPress={() => setShowCrisisAlert(false)} className="mt-2">
+              <Text className="text-xs text-muted">Dismiss</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
         {/* Messages */}
         <ScrollView
+          ref={scrollViewRef}
           className="flex-1 px-4 py-4"
-          contentContainerStyle={{ gap: 12 }}
+          contentContainerStyle={{ gap: 12, paddingBottom: 12 }}
           showsVerticalScrollIndicator={false}
+          onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
         >
           {messages.map((msg, idx) => (
             <View
