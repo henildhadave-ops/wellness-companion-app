@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/lib/theme-provider";
 import { AuthProvider, useAuth } from "@/lib/auth-context";
 import { WellnessProvider } from "@/lib/wellness-context";
 import { BreathingProvider } from "@/lib/breathing-context";
+import { PMRProvider } from "@/lib/pmr-context";
 import {
   SafeAreaFrameContext,
   SafeAreaInsetsContext,
@@ -125,7 +126,9 @@ export default function RootLayout() {
       <AuthProvider>
         <WellnessProvider>
           <BreathingProvider>
-            <RootLayoutContent />
+            <PMRProvider>
+              <RootLayoutContent />
+            </PMRProvider>
           </BreathingProvider>
         </WellnessProvider>
       </AuthProvider>

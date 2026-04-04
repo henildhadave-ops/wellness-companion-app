@@ -232,3 +232,20 @@
 - [x] Update Resources screen to display breathing exercises as cards
 - [x] Add modal/navigation to launch breathing exercises from Resources
 - [x] Update Resources UI to show all exercise types
+
+
+## Phase 13: Progressive Muscle Relaxation (PMR) Therapy
+
+- [x] Create PMR context for state management
+- [x] Implement PMR guided sequence (Toes → Calves → Thighs → Abdomen → Shoulders/Neck → Face)
+- [x] Add 3-step cycle for each muscle group (Focus & Tense, Massage & Release, Rest)
+- [ ] Create animated body silhouette SVG with muscle group highlighting
+- [ ] Implement tension visualization (warm orange/red glow)
+- [ ] Implement release visualization (cool teal/lavender transition)
+- [ ] Add massage animation effect (rippling waves, glowing orbs)
+- [x] Create breathing circle animation (expands on tense, deflates on release)
+- [x] Add progress bar showing journey from feet to head
+- [x] Implement Start/Pause button with smooth states
+- [x] Add PMR exercise to Resources tab with modal launcher
+- [x] Create vitest tests for PMR functionality (27 tests passing)
+- [x] Remove breathing tab from navigation entirely

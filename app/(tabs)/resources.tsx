@@ -1,4 +1,5 @@
 import { ScrollView, Text, View, TouchableOpacity, Modal, Alert, Animated } from 'react-native';
+import { useRouter } from 'expo-router';
 import { ScreenContainer } from '@/components/screen-container';
 import { useBreathing } from '@/lib/breathing-context';
 import { useState, useEffect, useRef } from 'react';
@@ -26,12 +27,15 @@ const RESOURCES = [
     exerciseId: '5-4-3-2-1-grounding',
   },
   {
-    id: '3',
+    id: 'pmr-therapy',
     title: 'Progressive Muscle Relaxation',
     category: 'Meditation',
-    description: 'Release tension from your body systematically',
+    description: 'Release tension from your entire body through guided muscle relaxation',
     icon: '💆',
-    duration: '10 min',
+    duration: '18 min',
+    type: 'exercise',
+    exerciseId: 'pmr-therapy',
+    route: '/pmr-detail',
   },
   {
     id: '4',
@@ -401,6 +405,7 @@ function BreathingExerciseModal({ resource, visible, onClose }: any) {
 }
 
 export default function ResourcesScreen() {
+  const router = useRouter();
   const { exercises } = useBreathing();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedExercise, setSelectedExercise] = useState<any>(null);
@@ -412,7 +417,11 @@ export default function ResourcesScreen() {
 
   const handleResourcePress = (resource: any) => {
     if (resource.type === 'exercise') {
-      setSelectedExercise(resource);
+      if (resource.route) {
+        router.push(resource.route);
+      } else {
+        setSelectedExercise(resource);
+      }
     } else {
       Alert.alert(resource.title, resource.description);
     }
