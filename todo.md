@@ -208,3 +208,17 @@
 - [ ] Implement message streaming for real-time responses
 - [x] Add safety guidelines and content filtering
 - [ ] Test crisis detection with various scenarios
+
+
+## Phase 11: Breathing Exercises & Grounding Techniques
+
+- [x] Create breathing exercises screen with timer
+- [x] Implement 5-minute uplifting breathing practice (4-4-4 count)
+- [x] Add guided breathing phases (settling in, uplifting breath, returning)
+- [x] Implement 5-4-3-2-1 grounding technique screen
+- [x] Add grounding technique guided walkthrough
+- [x] Create timer component for breathing exercises
+- [x] Add visual breathing animation (inhale/exhale indicators)
+- [ ] Implement audio guidance for breathing (optional)
+- [x] Add ability to save favorite exercises
+- [ ] Create quick access to exercises from home screen

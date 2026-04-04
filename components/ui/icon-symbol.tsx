@@ -17,6 +17,7 @@ const MAPPING = {
   "house.fill": "home",
   "paperplane.fill": "send",
   "heart.fill": "favorite",
+  "wind": "air",
   "doc.text.fill": "description",
   "book.fill": "library-books",
   "person.fill": "person",

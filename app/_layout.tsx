@@ -10,6 +10,7 @@ import "@/lib/_core/nativewind-pressable";
 import { ThemeProvider } from "@/lib/theme-provider";
 import { AuthProvider, useAuth } from "@/lib/auth-context";
 import { WellnessProvider } from "@/lib/wellness-context";
+import { BreathingProvider } from "@/lib/breathing-context";
 import {
   SafeAreaFrameContext,
   SafeAreaInsetsContext,
@@ -123,7 +124,9 @@ export default function RootLayout() {
     <ThemeProvider>
       <AuthProvider>
         <WellnessProvider>
-          <RootLayoutContent />
+          <BreathingProvider>
+            <RootLayoutContent />
+          </BreathingProvider>
         </WellnessProvider>
       </AuthProvider>
     </ThemeProvider>
