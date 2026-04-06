@@ -140,20 +140,20 @@ export default function ChatScreen() {
           <View className="flex-1 justify-center px-6 py-8 gap-6">
             <View className="items-center gap-4">
               <Text className="text-5xl">🧘</Text>
-              <Text className="text-3xl font-bold text-primary text-center">Start a Wellness Session</Text>
-              <Text className="text-base text-muted text-center leading-relaxed">
+              <Text className="text-3xl font-bold text-primary text-center" style={{ fontFamily: 'Fredoka-Bold' }}>Start a Wellness Session</Text>
+              <Text className="text-base text-muted text-center leading-relaxed" style={{ fontFamily: 'Quicksand-Regular' }}>
                 Connect with your AI wellness companion for a 30-minute supportive conversation powered by advanced AI.
               </Text>
             </View>
 
             <View className="bg-surface rounded-xl p-6 border border-border gap-3">
-              <Text className="text-sm font-semibold text-foreground">What to expect:</Text>
+              <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>What to expect:</Text>
               <View className="gap-2">
-                <Text className="text-sm text-muted">✓ Personalized, empathetic conversation</Text>
-                <Text className="text-sm text-muted">✓ Safe space to express your feelings</Text>
-                <Text className="text-sm text-muted">✓ Practical coping strategies</Text>
-                <Text className="text-sm text-muted">✓ Your privacy is always protected</Text>
-                <Text className="text-sm text-muted">✓ Powered by real AI technology</Text>
+                <Text className="text-sm text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>✓ Personalized, empathetic conversation</Text>
+                <Text className="text-sm text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>✓ Safe space to express your feelings</Text>
+                <Text className="text-sm text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>✓ Practical coping strategies</Text>
+                <Text className="text-sm text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>✓ Your privacy is always protected</Text>
+                <Text className="text-sm text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>✓ Powered by real AI technology</Text>
               </View>
             </View>
 
@@ -161,16 +161,16 @@ export default function ChatScreen() {
               className="bg-primary rounded-lg py-4 items-center"
               onPress={handleStartSession}
             >
-              <Text className="text-white font-semibold text-base">Start Session Now</Text>
+              <Text className="text-white font-semibold text-base" style={{ fontFamily: 'Fredoka-SemiBold' }}>Start Session Now</Text>
             </TouchableOpacity>
 
             <View className="bg-warning bg-opacity-10 rounded-lg p-4 border border-warning border-opacity-30">
-              <Text className="text-xs font-semibold text-foreground mb-2">Crisis Support</Text>
-              <Text className="text-xs text-muted mb-3">
+              <Text className="text-xs font-semibold text-foreground mb-2" style={{ fontFamily: 'Fredoka-SemiBold' }}>Crisis Support</Text>
+              <Text className="text-xs text-muted mb-3" style={{ fontFamily: 'Quicksand-Regular' }}>
                 If you're in crisis, please reach out to emergency services or a crisis hotline immediately.
               </Text>
               <TouchableOpacity className="bg-warning rounded-lg py-2 px-4 items-center">
-                <Text className="text-white font-semibold text-xs">Get Crisis Help</Text>
+                <Text className="text-white font-semibold text-xs" style={{ fontFamily: 'Fredoka-SemiBold' }}>Get Crisis Help</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -185,28 +185,28 @@ export default function ChatScreen() {
         {/* Header with Timer */}
         <View className="bg-primary px-6 py-4 flex-row items-center justify-between">
           <View>
-            <Text className="text-white text-sm opacity-80">Session Timer</Text>
-            <Text className="text-white text-2xl font-bold">{formatTime(timeRemaining)}</Text>
+            <Text className="text-white text-sm opacity-80" style={{ fontFamily: 'Quicksand-Regular' }}>Session Timer</Text>
+            <Text className="text-white text-2xl font-bold" style={{ fontFamily: 'Fredoka-Bold' }}>{formatTime(timeRemaining)}</Text>
           </View>
           <TouchableOpacity
             className="bg-white bg-opacity-20 rounded-lg px-4 py-2"
             onPress={handleEndSession}
           >
-            <Text className="text-white font-semibold text-sm">End Session</Text>
+            <Text className="text-white font-semibold text-sm" style={{ fontFamily: 'Fredoka-SemiBold' }}>End Session</Text>
           </TouchableOpacity>
         </View>
 
         {/* Crisis Alert */}
         {showCrisisAlert && crisisResources && (
           <View className="bg-error bg-opacity-10 px-4 py-3 border-b border-error border-opacity-30">
-            <Text className="text-sm font-semibold text-error mb-2">{crisisResources.title}</Text>
-            <Text className="text-xs text-foreground mb-3">{crisisResources.message}</Text>
+            <Text className="text-sm font-semibold text-error mb-2" style={{ fontFamily: 'Fredoka-SemiBold' }}>{crisisResources.title}</Text>
+            <Text className="text-xs text-foreground mb-3" style={{ fontFamily: 'Quicksand-Regular' }}>{crisisResources.message}</Text>
             <View className="gap-2">
               {crisisResources.resources.map((resource: any, idx: number) => (
                 <TouchableOpacity key={idx} className="bg-error bg-opacity-20 rounded-lg p-2">
-                  <Text className="text-xs font-semibold text-error">{resource.name}</Text>
-                  {resource.phone && <Text className="text-xs text-foreground">{resource.phone}</Text>}
-                  {resource.text && <Text className="text-xs text-foreground">{resource.text}</Text>}
+                  <Text className="text-xs font-semibold text-error" style={{ fontFamily: 'Fredoka-SemiBold' }}>{resource.name}</Text>
+                  {resource.phone && <Text className="text-xs text-foreground" style={{ fontFamily: 'Quicksand-Regular' }}>{resource.phone}</Text>}
+                  {resource.text && <Text className="text-xs text-foreground" style={{ fontFamily: 'Quicksand-Regular' }}>{resource.text}</Text>}
                 </TouchableOpacity>
               ))}
             </View>

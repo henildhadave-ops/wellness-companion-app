@@ -267,5 +267,10 @@
 - [x] Update theme.config.js with new colors
 - [x] Apply Fredoka font to all headings (home screen)
 - [x] Apply Quicksand font to body text (home screen)
+- [x] Apply fonts to Chat screen
+- [x] Apply fonts to Mood screen
+- [x] Apply fonts to Journal screen
+- [x] Apply fonts to Resources screen
+- [x] Apply fonts to Profile screen
 - [x] Update tailwind.config.js with font families
 - [x] Test branding across all screens (61 tests passing)

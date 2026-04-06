@@ -50,8 +50,8 @@ export default function JournalScreen() {
         <View className="flex-1 flex-col">
           {/* Header */}
           <View className="px-6 py-4 border-b border-border">
-            <Text className="text-2xl font-bold text-primary">New Entry</Text>
-            <Text className="text-sm text-muted mt-1">
+            <Text className="text-2xl font-bold text-primary" style={{ fontFamily: 'Fredoka-Bold' }}>New Entry</Text>
+            <Text className="text-sm text-muted mt-1" style={{ fontFamily: 'Quicksand-Regular' }}>
               {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
             </Text>
           </View>
@@ -60,7 +60,7 @@ export default function JournalScreen() {
           <ScrollView className="flex-1 px-6 py-4" showsVerticalScrollIndicator={false}>
             {/* Emotion Selection */}
             <View className="mb-6">
-              <Text className="text-sm font-semibold text-foreground mb-3">How are you feeling?</Text>
+              <Text className="text-sm font-semibold text-foreground mb-3" style={{ fontFamily: 'Fredoka-SemiBold' }}>How are you feeling?</Text>
               <View className="flex-row flex-wrap gap-2">
                 {emotions.map((emo) => (
                   <TouchableOpacity
@@ -86,7 +86,7 @@ export default function JournalScreen() {
 
             {/* Text Input */}
             <View className="mb-6">
-              <Text className="text-sm font-semibold text-foreground mb-3">Your thoughts</Text>
+              <Text className="text-sm font-semibold text-foreground mb-3" style={{ fontFamily: 'Fredoka-SemiBold' }}>Your thoughts</Text>
               <TextInput
                 className="bg-surface border border-border rounded-lg px-4 py-3 text-foreground"
                 placeholder="Write freely. This is your safe space..."

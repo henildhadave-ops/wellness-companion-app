@@ -62,15 +62,15 @@ export default function MoodScreen() {
         <View className="px-6 py-8 gap-8">
           {/* Header */}
           <View>
-            <Text className="text-3xl font-bold text-primary mb-2">How are you feeling?</Text>
-            <Text className="text-base text-muted">
+            <Text className="text-3xl font-bold text-primary mb-2" style={{ fontFamily: 'Fredoka-Bold' }}>How are you feeling?</Text>
+            <Text className="text-base text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>
               Check in with yourself and track your emotional wellbeing
             </Text>
           </View>
 
           {/* Emotion Selection */}
           <View className="gap-4">
-            <Text className="text-sm font-semibold text-foreground">Select your emotion</Text>
+            <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>Select your emotion</Text>
             <View className="flex-row flex-wrap gap-3">
               {EMOTIONS.map((emotion) => (
                 <TouchableOpacity
@@ -98,8 +98,8 @@ export default function MoodScreen() {
           {/* Intensity Slider */}
           <View className="gap-4">
             <View className="flex-row items-center justify-between">
-              <Text className="text-sm font-semibold text-foreground">Intensity</Text>
-              <Text className="text-2xl font-bold text-primary">{intensity}/10</Text>
+              <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>Intensity</Text>
+              <Text className="text-2xl font-bold text-primary" style={{ fontFamily: 'Fredoka-Bold' }}>{intensity}/10</Text>
             </View>
             <View className="flex-row gap-2">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -117,7 +117,7 @@ export default function MoodScreen() {
 
           {/* Note Input */}
           <View className="gap-3">
-            <Text className="text-sm font-semibold text-foreground">Add a note (optional)</Text>
+            <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>Add a note (optional)</Text>
             <TextInput
               className="bg-surface border border-border rounded-lg px-4 py-3 text-foreground"
               placeholder="What's on your mind?"
@@ -139,7 +139,7 @@ export default function MoodScreen() {
             onPress={handleSubmit}
             disabled={isSubmitting}
           >
-            <Text className="text-white font-semibold text-base">
+            <Text className="text-white font-semibold text-base" style={{ fontFamily: 'Fredoka-SemiBold' }}>
               {isSubmitting ? 'Logging...' : 'Log Mood'}
             </Text>
           </TouchableOpacity>

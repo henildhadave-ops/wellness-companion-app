@@ -433,8 +433,8 @@ export default function ResourcesScreen() {
         <View className="px-6 py-8 gap-6">
           {/* Header */}
           <View>
-            <Text className="text-3xl font-bold text-primary mb-2">Wellness Resources</Text>
-            <Text className="text-base text-muted">
+            <Text className="text-3xl font-bold text-primary mb-2" style={{ fontFamily: 'Fredoka-Bold' }}>Wellness Resources</Text>
+            <Text className="text-base text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>
               Curated tools and techniques for your wellbeing
             </Text>
           </View>
@@ -461,6 +461,7 @@ export default function ResourcesScreen() {
                     'text-sm font-medium',
                     selectedCategory === category ? 'text-white' : 'text-foreground'
                   )}
+                  style={{ fontFamily: 'Fredoka-Medium' }}
                 >
                   {category}
                 </Text>

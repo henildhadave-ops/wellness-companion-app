@@ -37,25 +37,25 @@ export default function ProfileScreen() {
               <Text className="text-3xl">👤</Text>
             </View>
             <View>
-              <Text className="text-2xl font-bold text-white">{user?.name}</Text>
-              <Text className="text-white text-opacity-80">{user?.email}</Text>
+              <Text className="text-2xl font-bold text-white" style={{ fontFamily: 'Fredoka-Bold' }}>{user?.name}</Text>
+              <Text className="text-white text-opacity-80" style={{ fontFamily: 'Quicksand-Regular' }}>{user?.email}</Text>
             </View>
           </View>
 
           {/* Subscription Status */}
           <View className="bg-surface rounded-lg p-4 border border-border gap-3">
-            <Text className="text-sm font-semibold text-foreground">Subscription Status</Text>
+            <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>Subscription Status</Text>
             <View className="flex-row items-center justify-between">
               <View>
-                <Text className="text-base font-semibold text-foreground capitalize">
+                <Text className="text-base font-semibold text-foreground capitalize" style={{ fontFamily: 'Fredoka-SemiBold' }}>
                   {user?.subscriptionStatus === 'free' ? 'Free Plan' : 'Premium'}
                 </Text>
-                <Text className="text-sm text-muted">
+                <Text className="text-sm text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>
                   {user?.totalSessions || 0} sessions available
                 </Text>
               </View>
               <View className="bg-primary bg-opacity-10 px-3 py-1 rounded-full">
-                <Text className="text-xs font-semibold text-primary capitalize">
+                <Text className="text-xs font-semibold text-primary capitalize" style={{ fontFamily: 'Fredoka-SemiBold' }}>
                   {user?.subscriptionStatus}
                 </Text>
               </View>
@@ -64,17 +64,17 @@ export default function ProfileScreen() {
 
           {/* Session Statistics */}
           <View className="gap-3">
-            <Text className="text-sm font-semibold text-foreground">Your Statistics</Text>
+            <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>Your Statistics</Text>
             <View className="flex-row gap-3">
               <View className="flex-1 bg-surface rounded-lg p-4 border border-border items-center">
-                <Text className="text-2xl font-bold text-primary mb-1">{sessions.length}</Text>
-                <Text className="text-xs text-muted text-center">Total Sessions</Text>
+                <Text className="text-2xl font-bold text-primary mb-1" style={{ fontFamily: 'Fredoka-Bold' }}>{sessions.length}</Text>
+                <Text className="text-xs text-muted text-center" style={{ fontFamily: 'Quicksand-Regular' }}>Total Sessions</Text>
               </View>
               <View className="flex-1 bg-surface rounded-lg p-4 border border-border items-center">
-                <Text className="text-2xl font-bold text-success mb-1">
+                <Text className="text-2xl font-bold text-success mb-1" style={{ fontFamily: 'Fredoka-Bold' }}>
                   {user?.totalSessions || 0}
                 </Text>
-                <Text className="text-xs text-muted text-center">Sessions Left</Text>
+                <Text className="text-xs text-muted text-center" style={{ fontFamily: 'Quicksand-Regular' }}>Sessions Left</Text>
               </View>
             </View>
           </View>
@@ -82,19 +82,19 @@ export default function ProfileScreen() {
           {/* Upgrade Section */}
           {user?.subscriptionStatus === 'free' && (
             <View className="bg-primary bg-opacity-10 rounded-lg p-4 border border-primary border-opacity-30 gap-3">
-              <Text className="text-sm font-semibold text-foreground">Upgrade to Premium</Text>
-              <Text className="text-xs text-muted">
+              <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>Upgrade to Premium</Text>
+              <Text className="text-xs text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>
                 Get unlimited sessions and premium features
               </Text>
               <TouchableOpacity className="bg-primary rounded-lg py-2 px-4 items-center">
-                <Text className="text-white font-semibold text-sm">View Plans</Text>
+                <Text className="text-white font-semibold text-sm" style={{ fontFamily: 'Fredoka-SemiBold' }}>View Plans</Text>
               </TouchableOpacity>
             </View>
           )}
 
           {/* Settings Section */}
           <View className="gap-3">
-            <Text className="text-sm font-semibold text-foreground">Settings</Text>
+            <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>Settings</Text>
 
             {/* Privacy Settings */}
             <TouchableOpacity className="bg-surface rounded-lg p-4 border border-border flex-row items-center justify-between">
