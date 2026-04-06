@@ -147,8 +147,8 @@ export default function JournalScreen() {
         <View className="px-6 py-8 gap-6">
           {/* Header */}
           <View>
-            <Text className="text-3xl font-bold text-primary mb-2">Your Journal</Text>
-            <Text className="text-base text-muted">
+            <Text className="text-3xl font-bold text-primary mb-2" style={{ fontFamily: 'Fredoka-Bold' }}>Your Journal</Text>
+            <Text className="text-base text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>
               A safe space for your thoughts and feelings
             </Text>
           </View>
@@ -158,13 +158,13 @@ export default function JournalScreen() {
             className="bg-primary rounded-lg py-4 items-center"
             onPress={() => setIsWriting(true)}
           >
-            <Text className="text-white font-semibold text-base">✍️ Write New Entry</Text>
+            <Text className="text-white font-semibold text-base" style={{ fontFamily: 'Fredoka-SemiBold' }}>✍️ Write New Entry</Text>
           </TouchableOpacity>
 
           {/* Entries List */}
           {journalEntries.length > 0 ? (
             <View className="gap-4">
-              <Text className="text-sm font-semibold text-foreground">Recent Entries</Text>
+              <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>Recent Entries</Text>
               {journalEntries
                 .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                 .map((entry) => (
@@ -173,7 +173,7 @@ export default function JournalScreen() {
                     className="bg-surface rounded-lg p-4 border border-border"
                   >
                     <View className="flex-row items-center justify-between mb-2">
-                      <Text className="text-sm font-semibold text-foreground">
+                      <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>
                         {new Date(entry.date).toLocaleDateString('en-US', {
                           weekday: 'short',
                           month: 'short',
@@ -184,11 +184,11 @@ export default function JournalScreen() {
                         <Text className="text-lg">{emotionEmoji[entry.emotion] || '😊'}</Text>
                       )}
                     </View>
-                    <Text className="text-sm text-muted leading-relaxed line-clamp-3">
+                    <Text className="text-sm text-muted leading-relaxed line-clamp-3" style={{ fontFamily: 'Quicksand-Regular' }}>
                       {entry.content}
                     </Text>
                     {entry.isPrivate && (
-                      <Text className="text-xs text-muted mt-2">🔒 Private</Text>
+                      <Text className="text-xs text-muted mt-2" style={{ fontFamily: 'Quicksand-Regular' }}>🔒 Private</Text>
                     )}
                   </View>
                 ))}
@@ -196,7 +196,7 @@ export default function JournalScreen() {
           ) : (
             <View className="bg-surface rounded-lg p-8 border border-border items-center gap-3">
               <Text className="text-4xl">📝</Text>
-              <Text className="text-base font-semibold text-foreground text-center">
+              <Text className="text-base font-semibold text-foreground text-center" style={{ fontFamily: 'Fredoka-SemiBold' }}>
                 No entries yet
               </Text>
               <Text className="text-sm text-muted text-center">

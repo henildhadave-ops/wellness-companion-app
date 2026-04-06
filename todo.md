@@ -274,3 +274,11 @@
 - [x] Apply fonts to Profile screen
 - [x] Update tailwind.config.js with font families
 - [x] Test branding across all screens (61 tests passing)
+
+
+## Phase 16: Additional Font & Content Updates
+
+- [x] Add fonts to journal entry list display
+- [x] Add fonts to resources card titles and descriptions
+- [x] Update "Managing Anxiety Spirals" resource with comprehensive content
+- [x] Change "Learn" to "Know" in anxiety spirals description

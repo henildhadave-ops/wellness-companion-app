@@ -41,9 +41,9 @@ const RESOURCES = [
     id: '4',
     title: 'Managing Anxiety Spirals',
     category: 'Coping Techniques',
-    description: 'Learn strategies to interrupt anxious thoughts',
+    description: 'Know strategies to interrupt anxious thoughts and break free from the spiral',
     icon: '🧠',
-    duration: '8 min',
+    duration: '12 min',
   },
   {
     id: '5',
@@ -481,15 +481,15 @@ export default function ResourcesScreen() {
                   <Text className="text-4xl">{resource.icon}</Text>
                   <View className="flex-1">
                     <View className="flex-row items-center justify-between mb-1">
-                      <Text className="text-sm font-semibold text-foreground flex-1">
+                      <Text className="text-sm font-semibold text-foreground flex-1" style={{ fontFamily: 'Fredoka-SemiBold' }}>
                         {resource.title}
                       </Text>
-                      <Text className="text-xs bg-primary bg-opacity-10 text-primary px-2 py-1 rounded">
+                      <Text className="text-xs bg-primary bg-opacity-10 text-primary px-2 py-1 rounded" style={{ fontFamily: 'Fredoka-Medium' }}>
                         {resource.category}
                       </Text>
                     </View>
-                    <Text className="text-sm text-muted mb-2">{resource.description}</Text>
-                    <Text className="text-xs text-muted">⏱️ {resource.duration}</Text>
+                    <Text className="text-sm text-muted mb-2" style={{ fontFamily: 'Quicksand-Regular' }}>{resource.description}</Text>
+                    <Text className="text-xs text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>⏱️ {resource.duration}</Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -498,18 +498,18 @@ export default function ResourcesScreen() {
 
           {/* Ad Placeholder */}
           <View className="bg-surface rounded-lg p-4 border border-border items-center justify-center h-24 gap-2">
-            <Text className="text-sm text-muted">Advertisement</Text>
-            <Text className="text-xs text-muted">Sponsored wellness content</Text>
+            <Text className="text-sm text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>Advertisement</Text>
+            <Text className="text-xs text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>Sponsored wellness content</Text>
           </View>
 
           {/* Crisis Support Banner */}
           <View className="bg-warning bg-opacity-10 rounded-lg p-4 border border-warning border-opacity-30 gap-2">
-            <Text className="text-sm font-semibold text-foreground">Need Immediate Help?</Text>
-            <Text className="text-xs text-muted mb-3">
+            <Text className="text-sm font-semibold text-foreground" style={{ fontFamily: 'Fredoka-SemiBold' }}>Need Immediate Help?</Text>
+            <Text className="text-xs text-muted mb-3" style={{ fontFamily: 'Quicksand-Regular' }}>
               If you're in crisis, please reach out to emergency services or a crisis hotline.
             </Text>
             <TouchableOpacity className="bg-warning rounded-lg py-2 px-4 items-center">
-              <Text className="text-white font-semibold text-sm">Get Crisis Help</Text>
+              <Text className="text-white font-semibold text-sm" style={{ fontFamily: 'Fredoka-SemiBold' }}>Get Crisis Help</Text>
             </TouchableOpacity>
           </View>
         </View>
