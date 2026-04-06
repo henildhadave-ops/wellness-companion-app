@@ -22,6 +22,10 @@ module.exports = {
   theme: {
     extend: {
       colors: tailwindColors,
+      fontFamily: {
+        fredoka: ['Fredoka-Bold', 'Fredoka-SemiBold', 'Fredoka-Medium', 'Fredoka-Regular'],
+        quicksand: ['Quicksand-Bold', 'Quicksand-SemiBold', 'Quicksand-Medium', 'Quicksand-Light', 'Quicksand-Regular'],
+      },
     },
   },
   plugins: [

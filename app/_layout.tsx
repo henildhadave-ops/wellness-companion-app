@@ -12,6 +12,7 @@ import { AuthProvider, useAuth } from "@/lib/auth-context";
 import { WellnessProvider } from "@/lib/wellness-context";
 import { BreathingProvider } from "@/lib/breathing-context";
 import { PMRProvider } from "@/lib/pmr-context";
+import { FontProvider } from "@/lib/font-provider";
 import {
   SafeAreaFrameContext,
   SafeAreaInsetsContext,
@@ -122,16 +123,18 @@ function RootLayoutContent() {
 
 export default function RootLayout() {
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <WellnessProvider>
-          <BreathingProvider>
-            <PMRProvider>
-              <RootLayoutContent />
-            </PMRProvider>
-          </BreathingProvider>
-        </WellnessProvider>
-      </AuthProvider>
-    </ThemeProvider>
+    <FontProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <WellnessProvider>
+            <BreathingProvider>
+              <PMRProvider>
+                <RootLayoutContent />
+              </PMRProvider>
+            </BreathingProvider>
+          </WellnessProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </FontProvider>
   );
 }

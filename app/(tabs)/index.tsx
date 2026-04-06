@@ -53,20 +53,20 @@ export default function HomeScreen() {
         <View className="px-6 py-8 gap-8">
           {/* Welcome Header */}
           <View>
-            <Text className="text-3xl font-bold text-primary mb-2">
+            <Text className="text-3xl font-bold text-primary mb-2" style={{ fontFamily: 'Fredoka-Bold' }}>
               Welcome back, {user?.name?.split(' ')[0]}
             </Text>
-            <Text className="text-base text-muted">
+            <Text className="text-base text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>
               Your wellness journey continues here
             </Text>
           </View>
 
           {/* Session Counter Card */}
-          <View className="bg-gradient-to-br from-primary to-success rounded-2xl p-6 shadow-sm">
-            <Text className="text-sm font-medium text-white opacity-80 mb-2">Sessions Available</Text>
+          <View className="bg-gradient-to-br from-primary to-secondary rounded-2xl p-6 shadow-sm">
+            <Text className="text-sm font-medium text-white opacity-80 mb-2" style={{ fontFamily: 'Fredoka-SemiBold' }}>Sessions Available</Text>
             <View className="flex-row items-baseline gap-2 mb-4">
-              <Text className="text-5xl font-bold text-white">{user?.totalSessions || 0}</Text>
-              <Text className="text-lg text-white opacity-70">sessions</Text>
+              <Text className="text-5xl font-bold text-white" style={{ fontFamily: 'Fredoka-Bold' }}>{user?.totalSessions || 0}</Text>
+              <Text className="text-lg text-white opacity-70" style={{ fontFamily: 'Quicksand-Regular' }}>sessions</Text>
             </View>
             <View className="bg-white bg-opacity-20 rounded-full h-2 overflow-hidden">
               <View
@@ -77,7 +77,7 @@ export default function HomeScreen() {
               />
             </View>
             {user?.freeSessions && user.freeSessions > 0 && (
-              <Text className="text-xs text-white opacity-70 mt-3">
+              <Text className="text-xs text-white opacity-70 mt-3" style={{ fontFamily: 'Quicksand-Regular' }}>
                 {user.freeSessions} free sessions remaining
               </Text>
             )}
@@ -86,16 +86,16 @@ export default function HomeScreen() {
           {/* Today's Mood */}
           {todayMood && (
             <View className="bg-surface rounded-xl p-4 border border-border">
-              <Text className="text-xs font-medium text-muted uppercase tracking-wider mb-3">
+              <Text className="text-xs font-medium text-muted uppercase tracking-wider mb-3" style={{ fontFamily: 'Fredoka-SemiBold' }}>
                 Today's Mood
               </Text>
               <View className="flex-row items-center gap-3">
                 <Text className="text-4xl">{emotionEmoji[todayMood.emotion] || '😊'}</Text>
                 <View className="flex-1">
-                  <Text className="text-base font-semibold text-foreground capitalize">
+                  <Text className="text-base font-semibold text-foreground capitalize" style={{ fontFamily: 'Fredoka-SemiBold' }}>
                     {todayMood.emotion}
                   </Text>
-                  <Text className="text-sm text-muted">
+                  <Text className="text-sm text-muted" style={{ fontFamily: 'Quicksand-Regular' }}>
                     Intensity: {todayMood.intensity}/10
                   </Text>
                 </View>
@@ -115,8 +115,8 @@ export default function HomeScreen() {
               disabled={user?.totalSessions === 0}
             >
               <View>
-                <Text className="text-white font-semibold text-base">Start Wellness Session</Text>
-                <Text className="text-white text-xs opacity-80">30 minutes of AI support</Text>
+                <Text className="text-white font-semibold text-base" style={{ fontFamily: 'Fredoka-SemiBold' }}>Start Wellness Session</Text>
+                <Text className="text-white text-xs opacity-80" style={{ fontFamily: 'Quicksand-Regular' }}>30 minutes of AI support</Text>
               </View>
               <Text className="text-2xl">→</Text>
             </TouchableOpacity>
@@ -127,8 +127,8 @@ export default function HomeScreen() {
               onPress={() => router.push('./mood')}
             >
               <View>
-                <Text className="text-foreground font-semibold text-base">Log Your Mood</Text>
-                <Text className="text-muted text-xs">How are you feeling today?</Text>
+                <Text className="text-foreground font-semibold text-base" style={{ fontFamily: 'Fredoka-SemiBold' }}>Log Your Mood</Text>
+                <Text className="text-muted text-xs" style={{ fontFamily: 'Quicksand-Regular' }}>How are you feeling today?</Text>
               </View>
               <Text className="text-2xl">→</Text>
             </TouchableOpacity>
@@ -139,8 +139,8 @@ export default function HomeScreen() {
               onPress={() => router.push('./journal')}
             >
               <View>
-                <Text className="text-foreground font-semibold text-base">Write in Journal</Text>
-                <Text className="text-muted text-xs">Express your thoughts</Text>
+                <Text className="text-foreground font-semibold text-base" style={{ fontFamily: 'Fredoka-SemiBold' }}>Write in Journal</Text>
+                <Text className="text-muted text-xs" style={{ fontFamily: 'Quicksand-Regular' }}>Express your thoughts</Text>
               </View>
               <Text className="text-2xl">→</Text>
             </TouchableOpacity>
@@ -151,8 +151,8 @@ export default function HomeScreen() {
               onPress={() => router.push('./resources')}
             >
               <View>
-                <Text className="text-foreground font-semibold text-base">Browse Resources</Text>
-                <Text className="text-muted text-xs">Meditation, tips, and more</Text>
+                <Text className="text-foreground font-semibold text-base" style={{ fontFamily: 'Fredoka-SemiBold' }}>Browse Resources</Text>
+                <Text className="text-muted text-xs" style={{ fontFamily: 'Quicksand-Regular' }}>Meditation, tips, and more</Text>
               </View>
               <Text className="text-2xl">→</Text>
             </TouchableOpacity>
@@ -160,21 +160,21 @@ export default function HomeScreen() {
 
           {/* Stats Section */}
           <View className="gap-3">
-            <Text className="text-xs font-medium text-muted uppercase tracking-wider">
+            <Text className="text-xs font-medium text-muted uppercase tracking-wider" style={{ fontFamily: 'Fredoka-SemiBold' }}>
               Your Progress
             </Text>
             <View className="flex-row gap-3">
               <View className="flex-1 bg-surface rounded-lg p-4 border border-border items-center">
-                <Text className="text-2xl font-bold text-primary mb-1">
+                <Text className="text-2xl font-bold text-primary mb-1" style={{ fontFamily: 'Fredoka-Bold' }}>
                   {user?.totalSessions || 0}
                 </Text>
-                <Text className="text-xs text-muted text-center">Total Sessions</Text>
+                <Text className="text-xs text-muted text-center" style={{ fontFamily: 'Quicksand-Regular' }}>Total Sessions</Text>
               </View>
               <View className="flex-1 bg-surface rounded-lg p-4 border border-border items-center">
-                <Text className="text-2xl font-bold text-success mb-1">
+                <Text className="text-2xl font-bold text-success mb-1" style={{ fontFamily: 'Fredoka-Bold' }}>
                   {todayMood ? '✓' : '—'}
                 </Text>
-                <Text className="text-xs text-muted text-center">Mood Logged</Text>
+                <Text className="text-xs text-muted text-center" style={{ fontFamily: 'Quicksand-Regular' }}>Mood Logged</Text>
               </View>
             </View>
           </View>
