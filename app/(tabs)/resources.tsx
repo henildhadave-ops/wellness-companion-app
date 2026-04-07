@@ -44,6 +44,37 @@ const RESOURCES = [
     description: 'Know strategies to interrupt anxious thoughts and break free from the spiral',
     icon: '🧠',
     duration: '12 min',
+    fullContent: `When the Mind Turns Against Itself
+
+There is a particular kind of exhaustion that comes not from working too hard or sleeping too little, but from thinking too much. Anxiety spirals are not a sign of weakness. They are, in a very literal neurological sense, the brain doing exactly what it was designed to do — only doing it in the wrong context, at the wrong time, and without an off switch. Understanding why that happens is the first step toward changing it.
+
+What Is Actually Happening in the Brain
+
+When threat is perceived, whether real or imagined, the amygdala triggers a stress response. Cortisol and adrenaline flood the bloodstream. Heart rate climbs. Breathing becomes shallow. Thoughts narrow and loop. This is the same mechanism that helped early humans survive predators. The problem is that the brain cannot reliably tell the difference between a tiger and a difficult conversation, a job interview, or the silence after a breakup. For teenagers especially, this system is running on particularly sensitive hardware. The adolescent brain is still developing its prefrontal cortex, which is the region responsible for rational thought, perspective-taking, and emotional regulation. That is not an excuse. It is a biological fact worth treating seriously.
+
+The Spiral Itself
+
+Anxiety spirals tend to follow a recognizable pattern. A triggering thought or sensation arrives. The nervous system responds with physical symptoms. The physical symptoms become new evidence that something is wrong. That evidence feeds more frightening thoughts. Those thoughts produce stronger physical symptoms. The loop tightens. What makes this particularly cruel is that the harder one tries to stop thinking anxious thoughts, the more prominent those thoughts become. This is sometimes called the white bear phenomenon, named after a well-known psychological experiment by Daniel Wegner: ask someone not to think about a white bear, and a white bear is practically all they can think about.
+
+Grounding Before Everything Else
+
+The most clinically consistent first-line response to an active anxiety spiral is grounding, not because it is simple, but because it works directly on the nervous system rather than trying to argue with it. The 5-4-3-2-1 technique asks the person to name five things they can see, four they can physically touch, three they can hear, two they can smell, and one they can taste. This is not a distraction trick. It is a deliberate redirection of attentional resources from internal catastrophizing to external sensory input, which activates the parasympathetic nervous system and begins to slow the spiral down. Box breathing, which involves inhaling for four counts, holding for four, exhaling for four, and holding again for four, works on a similar principle. It gives the body something measurable and rhythmic to do, which is often what a spiraling mind most needs.
+
+Movement as Medicine
+
+There is a reason that exercise appears in nearly every mental health guideline published in the last two decades. Physical movement clears cortisol, releases endorphins, and breaks the body out of the frozen, contracted state that anxiety tends to create. This does not require a gym or a training plan. A ten-minute walk, even a slow one, produces measurable reductions in anxiety symptoms according to a 2018 review in Frontiers in Psychiatry. For younger people especially, the body often holds anxiety before the mind has even named it. Moving is sometimes the most direct route to relief available.
+
+What to Say to Yourself
+
+Cognitive reframing is a cornerstone of evidence-based anxiety treatment, but it deserves a more honest introduction than it usually gets. Telling someone in the middle of a spiral to "think positively" is not just unhelpful. It can make things worse by adding a layer of shame onto an already overloaded system. What actually works is something more modest and more truthful. Statements like "this feeling is temporary," "the worst case scenario is unlikely and manageable," and "anxiety feels dangerous but is not" work not because they are inspiring but because they are accurate. The goal is not to override the feeling. The goal is to stop adding fuel to it.
+
+Connection Is Not Optional
+
+Isolation is among the most reliable ways to make anxiety worse. When distress is shared, even incompletely, even imperfectly, with another person who responds with something resembling understanding, the nervous system calms. This is not metaphorical. Research on social buffering, including studies by the University of Virginia and later replicated in adolescent populations, shows that the physical presence of a trusted person reduces hypothalamic stress responses in measurable ways. Reaching out is not a weakness. For both teenagers navigating heartbreak and adults carrying grief or financial strain, it is often the most direct intervention available. A text that says "today has been hard" is a clinical act.
+
+A Final Word on Patience
+
+Managing anxiety is not a skill that arrives fully formed. It builds slowly, through repeated practice, through failed attempts that still count for something, and through the gradual accumulation of evidence that the spiral has an end. Every time the breath slows down before the catastrophe arrives, the nervous system learns something. That learning is real, it is durable, and it does not disappear when the next hard season comes.`,
   },
   {
     id: '5',
@@ -121,7 +152,9 @@ function BreathingExerciseModal({ resource, visible, onClose }: any) {
           if (currentPhaseIndex < exercise.phases.length - 1) {
             setCurrentPhaseIndex((idx) => idx + 1);
             setTimeRemaining(exercise.phases[currentPhaseIndex + 1]?.duration || 0);
-          } else {
+          } else if (resource.fullContent) {
+      Alert.alert(resource.title, resource.fullContent);
+    } else {
             handleCompleteExercise();
           }
           return 0;
@@ -152,7 +185,9 @@ function BreathingExerciseModal({ resource, visible, onClose }: any) {
         setBreathaPhase('inhale');
       } else if (position < inhaleTime + pauseTime) {
         setBreathaPhase('pause');
-      } else {
+      } else if (resource.fullContent) {
+      Alert.alert(resource.title, resource.fullContent);
+    } else {
         setBreathaPhase('exhale');
       }
     }, 100);
@@ -422,6 +457,8 @@ export default function ResourcesScreen() {
       } else {
         setSelectedExercise(resource);
       }
+    } else if (resource.fullContent) {
+      Alert.alert(resource.title, resource.fullContent);
     } else {
       Alert.alert(resource.title, resource.description);
     }

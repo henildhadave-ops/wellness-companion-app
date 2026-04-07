@@ -280,5 +280,7 @@
 
 - [x] Add fonts to journal entry list display
 - [x] Add fonts to resources card titles and descriptions
-- [x] Update "Managing Anxiety Spirals" resource with comprehensive content
+- [x] Update "Managing Anxiety Spirals" resource with comprehensive full content
 - [x] Change "Learn" to "Know" in anxiety spirals description
+- [x] Add fullContent property to anxiety spirals resource
+- [x] Update handleResourcePress to display full content when available
