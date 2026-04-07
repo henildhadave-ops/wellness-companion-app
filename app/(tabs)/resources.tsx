@@ -444,6 +444,7 @@ export default function ResourcesScreen() {
   const { exercises } = useBreathing();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedExercise, setSelectedExercise] = useState<any>(null);
+  const [selectedContent, setSelectedContent] = useState<any>(null);
 
   const filteredResources =
     selectedCategory === 'All'
@@ -458,7 +459,7 @@ export default function ResourcesScreen() {
         setSelectedExercise(resource);
       }
     } else if (resource.fullContent) {
-      Alert.alert(resource.title, resource.fullContent);
+      setSelectedContent(resource);
     } else {
       Alert.alert(resource.title, resource.description);
     }
@@ -558,6 +559,32 @@ export default function ResourcesScreen() {
         visible={!!selectedExercise}
         onClose={() => setSelectedExercise(null)}
       />
+
+      {/* Content Detail Modal */}
+      <Modal visible={!!selectedContent} animationType="slide" transparent>
+        <ScreenContainer className="bg-background">
+          <View className="flex-1 flex-col">
+            {/* Header */}
+            <View className="bg-primary px-6 py-4 flex-row items-center justify-between">
+              <View className="flex-1">
+                <Text className="text-white text-2xl font-bold" style={{ fontFamily: 'Fredoka-Bold' }}>
+                  {selectedContent?.title}
+                </Text>
+              </View>
+              <TouchableOpacity onPress={() => setSelectedContent(null)}>
+                <Text className="text-white text-2xl">✕</Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Content */}
+            <ScrollView className="flex-1 px-6 py-6" showsVerticalScrollIndicator={false}>
+              <Text className="text-base text-foreground leading-relaxed" style={{ fontFamily: 'Quicksand-Regular' }}>
+                {selectedContent?.fullContent}
+              </Text>
+            </ScrollView>
+          </View>
+        </ScreenContainer>
+      </Modal>
     </ScreenContainer>
   );
 }
