@@ -83,6 +83,129 @@ Managing anxiety is not a skill that arrives fully formed. It builds slowly, thr
     description: 'Cultivate kindness toward yourself',
     icon: '💝',
     duration: '7 min',
+    fullContent: `Finding Kindness Within
+
+This practice takes about seven minutes. There is nothing to get right. Your only task is to be present.
+
+--- PHASE 1: SETTLING (1 minute) ---
+
+Find a comfortable position — sitting, lying, or standing. Close your eyes, or let your gaze soften toward the floor. Take three slow breaths. Feel the weight of your body supported beneath you.
+
+--- PHASE 2: ACKNOWLEDGE (2 minutes) ---
+
+Bring to mind something that is difficult right now. Not the hardest thing you've ever faced — just something that feels a little uncomfortable today. Notice where you feel that discomfort in your body. A tightness? A heaviness? You don't need to fix it. Simply say, quietly, to yourself:
+
+"This is a moment of difficulty."
+
+Let that be enough for now.
+
+--- PHASE 3: COMMON HUMANITY (2 minutes) ---
+
+You are not alone in this feeling. Right now, thousands of people around the world feel exactly what you are feeling. Difficulty is part of being human. Say to yourself:
+
+"I am not alone. Struggle is part of life."
+
+--- PHASE 4: SELF-KINDNESS (2 minutes) ---
+
+Place one hand gently on your heart if that feels comfortable. Feel the warmth of your own touch. Ask yourself: "What would I say to a dear friend who felt this way?" Then — say that to yourself. You deserve the same kindness.
+
+A phrase you might try:
+"May I be gentle with myself in this moment."
+"May I give myself the compassion I need."
+
+--- CLOSE ---
+
+When you're ready, take one more slow breath. Open your eyes gently. Carry this kindness with you.`,
+  },
+  {
+    id: '5a',
+    title: 'Micro Self-Compassion Break',
+    category: 'Meditation',
+    description: 'A 3-minute gentle reset when emotions feel intense',
+    icon: '🌿',
+    duration: '3 min',
+    fullContent: `Quick Kindness Reset
+
+When feelings feel too big, this 3-minute practice brings you back to center.
+
+--- PHASE 1: PAUSE (1 minute) ---
+
+Stop what you're doing. Place one hand on your heart. Feel it beating. You are alive. You are here.
+
+--- PHASE 2: NAME IT (1 minute) ---
+
+Say to yourself: "This is hard right now. And that's okay. I'm allowed to feel this."
+
+--- PHASE 3: KINDNESS (1 minute) ---
+
+Whisper to yourself: "May I be gentle with myself. I deserve kindness, especially now."
+
+Take one more breath. You did it.`,
+  },
+  {
+    id: '5b',
+    title: 'Self-Forgiveness Meditation',
+    category: 'Meditation',
+    description: 'Release anger and self-judgment with compassion',
+    icon: '🌟',
+    duration: '10 min',
+    fullContent: `Letting Go With Kindness
+
+Self-forgiveness is not about excusing harm — it's about releasing the grip of shame so you can move forward.
+
+--- PHASE 1: SETTLING (2 minutes) ---
+
+Find stillness. Breathe slowly. You are safe here.
+
+--- PHASE 2: ACKNOWLEDGE THE PAIN (3 minutes) ---
+
+Bring to mind something you're angry at yourself about. Don't minimize it. Feel it fully. Say: "I hurt. I made a mistake. I'm human."
+
+--- PHASE 3: UNDERSTAND (2 minutes) ---
+
+You did the best you could with what you knew then. That's the truth. Say: "I was doing my best. I didn't know better then. I know better now."
+
+--- PHASE 4: RELEASE (3 minutes) ---
+
+Place both hands on your heart. Say: "I forgive myself. I am learning. I am growing. I deserve my own compassion."
+
+Let the weight lift, bit by bit.`,
+  },
+  {
+    id: '5c',
+    title: 'Loving-Kindness for Beginners',
+    category: 'Meditation',
+    description: 'Start your self-compassion journey with this gentle introduction',
+    icon: '💕',
+    duration: '5 min',
+    fullContent: `Your First Step Into Kindness
+
+This is a beginner-friendly introduction to extending kindness — first to yourself, then gently outward.
+
+--- PHASE 1: CENTER (1 minute) ---
+
+Sit comfortably. Close your eyes. Breathe.
+
+--- PHASE 2: KINDNESS TO YOURSELF (2 minutes) ---
+
+Repeat slowly, three times:
+"May I be safe."
+"May I be healthy."
+"May I be at peace."
+
+Feel each word. You deserve this.
+
+--- PHASE 3: KINDNESS TO OTHERS (1 minute) ---
+
+Bring to mind someone you care about. Say:
+"May you be safe. May you be healthy. May you be at peace."
+
+--- PHASE 4: CLOSE (1 minute) ---
+
+Return to yourself. Say one more time:
+"May I be kind to myself today."
+
+That's all. You've begun.`,
   },
   {
     id: '6',

@@ -284,3 +284,18 @@
 - [x] Change "Learn" to "Know" in anxiety spirals description
 - [x] Add fullContent property to anxiety spirals resource
 - [x] Update handleResourcePress to display full content when available
+
+
+## Phase 17: Self-Compassion Meditation Integration
+
+- [x] Add fullContent to Self-Compassion Meditation resource (7-min core session)
+- [x] Add three variant self-compassion cards (Micro, Self-Forgiveness, Loving-Kindness)
+- [x] Upgrade AI chat system prompt with self-compassion micro-moments
+- [ ] Add mid-session self-compassion pause at 15-minute mark in chat
+- [ ] Add crisis-aware self-compassion framing before crisis resources
+- [x] Create emotion-responsive self-compassion suggestions in mood screen
+- [x] Add self-compassion journaling prompts to journal rotation
+- [ ] Implement self-criticism detection in journal with gentle nudge
+- [ ] Add Daily Compassion Moment card to home dashboard
+- [ ] Integrate self-compassion reminders with Expo Notifications
+- [x] Test self-compassion flows end-to-end (61 tests passing)
