@@ -81,7 +81,11 @@ export default function JournalScreen() {
     };
 
     try {
-      await addJournalEntry(content, selectedEmotion, isPrivate);
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+      const timestampStr = now.toISOString();
+      await addJournalEntry(content, selectedEmotion, isPrivate, title, timeStr, timestampStr);
       Alert.alert('Success', 'Your reflection has been saved with kindness.');
       setTitle('');
       setContent('');
