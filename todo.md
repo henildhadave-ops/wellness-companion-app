@@ -299,3 +299,18 @@
 - [ ] Add Daily Compassion Moment card to home dashboard
 - [ ] Integrate self-compassion reminders with Expo Notifications
 - [x] Test self-compassion flows end-to-end (61 tests passing)
+
+
+## Phase 18: Journal Section Redesign
+
+- [x] Create "Past Reflections" section showing previous entries
+- [x] Add entry preview cards with date, time, emotion icon, and excerpt
+- [x] Implement modal to view full entry details
+- [x] Add "VIEW ALL" button to expand past reflections
+- [x] Create beautiful journal entry creation screen with title and emotion selector
+- [x] Add journaling prompt display with "USE PROMPT" button
+- [x] Implement emotion tag selection UI (emotion icons with labels)
+- [x] Add privacy toggle (save/publish) for entries
+- [x] Style with pastel yellow/orange palette and Fredoka/Quicksand fonts
+- [x] Add smooth transitions and animations between states
+- [x] Test journal flows end-to-end (61 tests passing)
