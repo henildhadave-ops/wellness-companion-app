@@ -21,13 +21,10 @@ export interface MoodEntry {
 
 export interface JournalEntry {
   id: string;
-  title: string;
   date: string;
-  time: string;
   content: string;
-  emotion: string;
+  emotion?: string;
   isPrivate: boolean;
-  timestamp: string;
 }
 
 interface WellnessContextType {
@@ -41,7 +38,7 @@ interface WellnessContextType {
   addSessionMessage: (role: 'user' | 'assistant', content: string) => Promise<void>;
   addMoodEntry: (emotion: string, intensity: number, note?: string) => Promise<void>;
   getTodayMood: () => MoodEntry | undefined;
-  addJournalEntry: (content: string, emotion?: string, isPrivate?: boolean, title?: string, time?: string, timestamp?: string) => Promise<void>;
+  addJournalEntry: (content: string, emotion?: string, isPrivate?: boolean) => Promise<void>;
   getSessionHistory: () => Session[];
   getMoodTrend: (days: number) => MoodEntry[];
 }
@@ -159,18 +156,14 @@ export function WellnessProvider({ children }: { children: ReactNode }) {
     return moodEntries.find((e) => e.date === today);
   };
 
-  const addJournalEntry = async (content: string, emotion: string = 'peaceful', isPrivate = true, title: string = 'Untitled', time: string = '', timestamp: string = '') => {
+  const addJournalEntry = async (content: string, emotion?: string, isPrivate = true) => {
     try {
-      const now = new Date();
       const newEntry: JournalEntry = {
         id: `journal_${Date.now()}`,
-        title: title || 'Untitled',
-        date: now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-        time: time || now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
+        date: new Date().toISOString(),
         content,
-        emotion: emotion || 'peaceful',
+        emotion,
         isPrivate,
-        timestamp: timestamp || now.toISOString(),
       };
 
       const updatedEntries = [...journalEntries, newEntry];

@@ -1,0 +1,49 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [
+    "db",
+    "server",
+    "user"
+  ],
+  "dev_command": "pnpm run dev",
+  "env_vars": {
+    "DATABASE_URL": "mysql://3yHkK1SHASS8p2c.root:Tklp8qyh563h2poBdwD1@gateway05.us-east-1.prod.aws.tidbcloud.com:4000/XA2vxFa7iJ6D3F3skEW57w?ssl={\"rejectUnauthorized\":true}"
+  },
+  "experiments": [
+    "no_db_push"
+  ],
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663507208616/XA2vxFa7iJ6D3F3skEW57w",
+    "access_key_id": "ASIAZV3A2ECZIKI4HYPB",
+    "secret_access_key": "nhF11KmL+Goo0LRwqhmiaXWbjoaUi7gVeZmpxw1z",
+    "session_token": "IQoJb3JpZ2luX2VjEB4aCXVzLWVhc3QtMSJHMEUCIHPkK6iHBF4wZXbpm0v3QMyCYksKq+l2N6fAOT96mXC5AiEArCy3He1Px+OE++ErpBfvsJw2MuUVyvQ7il9ILKW+hZ8q/wMI5///////////ARAEGgw2NjUzODYwOTg4NjYiDBKX+ipZv9yi9nVZ5yrTA4y1NB8nKKe5TME9GywKongw5JGiYxa7CvKWWAemwpAA4AcSSxZoTzpPUbXvk4/Of3olqbwFErhqUNoiuly4unAnOA1wPd24vnJfjTmfrfMWMwLoq3DXxidHi/iUD0z1t3K2Df2UX9twyH1U+aIl/wTGpWQaWkZpPWGv7xK1gPBCRZvVKDx1S1wmUTgQ+BvCqRgDz9+43//c6XtWmHbeQ28Ejft3TLIoX6ZLvGkW1qLXPwMLWlp4ZnxtxrTAJ5LDBO9wP5mGI8g0ud+dXqTA3yrwCOhrMb2c3aRvQwz+kGSkpK/QbS7jUCrrEye4CQrH6pWUzCDkS4XD9L1MCg5YLskrErLBvuUUxqsnzWGGDxpRKBvphdAZ4DcWtOPmNKz6aXXoGutCq9lnvV3pomOh97kGJiLIipDkylV9poCdRDH6XWPV9u5/+xzOc+c+ev48cpYgKh/FbtFcheG3h6MzbHUhqsU9wbxh3+DIhUz317TezA23myxARFfYndruZm1EMbgFnRcRid94Et6uQ1bjQfFr+72NxxHQ5K2shCmt2t0ewKpLEevIHoUtYGrmrAJ6LGZ9qUgQt9D0DyigR7Su4UhKdM7BZbYLNr4BBpo4avRRDaH8MO3z3dEGOp0BKJNCfDuvMYYBs7k80E2eX5AXL5oelEpycqXlAcdlbtM0YhcI0d+WVChfhv5pszGuLe4fRRz2Jil1iMN1GjxWLzzrFZ3HLaoI4qUjALOVncVFI3SuUEl+YlE+8X4HK9yLcJ8Yy10WYdaj34wB3zYiMzpEH09O8NTtls6hp1D1OO/a/QoCRPFypGE774GvqtoMhmI7dMLzme4hPDGCLA==",
+    "expiration": "2026-06-21T17:43:09.000Z",
+    "backend": "GIT_BACKEND_S3"
+  },
+  "name": "wellness-companion-app",
+  "path": "/home/ubuntu/wellness-companion-app",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "QcaZuNq7mKnVCegGqGJxsn",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "EXPO_APP_QR_URL": "exps://8081-icxrxb0yu59i7of4yc1xm-2067d90e.sg1.manus.computer",
+    "EXPO_PACKAGER_PROXY_URL": "https://8081-icxrxb0yu59i7of4yc1xm-2067d90e.sg1.manus.computer",
+    "EXPO_PUBLIC_API_BASE_URL": "https://3000-icxrxb0yu59i7of4yc1xm-2067d90e.sg1.manus.computer",
+    "Gemini": "AIzaSyCcsdNtu0tpV93VEmFJzp4eMAqI1IuSniY",
+    "JWT_SECRET": "A8jkP69nvec6rq79UaL4JT",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Henil Dhadave",
+    "OWNER_OPEN_ID": "2pWgBqLxe8T8VfNNgDcENs",
+    "REACT_NATIVE_PACKAGER_HOSTNAME": "8081-icxrxb0yu59i7of4yc1xm-2067d90e.sg1.manus.computer",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "f5f1dc52-8f89-4436-b4b6-0011efa43b57",
+    "VITE_APP_ID": "XA2vxFa7iJ6D3F3skEW57w",
+    "VITE_APP_LOGO": "https://d2xsxph8kpxj0f.cloudfront.net/310519663507208616/XA2vxFa7iJ6D3F3skEW57w/icon-Vzwb8k4UGLALiTW9Pd5qeU.png",
+    "VITE_APP_TITLE": "Wellness Companion",
+    "VITE_FRONTEND_FORGE_API_KEY": "Kn5vEtgdBgLJSgEpkNQcBP",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "app",
+  "test_command": "pnpm test"
+}
