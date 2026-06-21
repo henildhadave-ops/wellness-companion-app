@@ -314,3 +314,18 @@
 - [x] Style with pastel yellow/orange palette and Fredoka/Quicksand fonts
 - [x] Add smooth transitions and animations between states
 - [x] Test journal flows end-to-end (61 tests passing)
+
+
+## Phase 20: Journal Search & Emotion Filters
+
+- [ ] Add search bar to past reflections section
+- [ ] Implement search functionality by title and content
+- [ ] Add emotion filter buttons (grounded, radiant, flowing, pensive, peaceful, hopeful)
+- [ ] Implement filter logic to show entries by selected emotion
+- [ ] Add "All" filter option to show all entries
+- [ ] Display filtered entry count
+- [ ] Add clear/reset filters button
+- [ ] Style filters with pastel colors and Fredoka font
+- [ ] Test search and filter functionality
+- [x] Fixed TypeScript errors in journal.tsx (JournalEntry interface, proper type annotations)
+- [x] All 61 tests passing

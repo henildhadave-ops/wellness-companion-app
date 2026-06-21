@@ -4,6 +4,17 @@ import { ScreenContainer } from '@/components/screen-container';
 import { useWellness } from '@/lib/wellness-context';
 import { useColors } from '@/hooks/use-colors';
 
+interface JournalEntry {
+  id: string;
+  title: string;
+  content: string;
+  emotion: string;
+  isPrivate: boolean;
+  timestamp: string;
+  date: string;
+  time: string;
+}
+
 const PROMPTS = [
   "If your closest friend felt exactly how you feel today, what would you say to them?",
   "Write about one thing you did today that took effort. Acknowledge it.",
@@ -17,7 +28,7 @@ const PROMPTS = [
   "What did you learn about yourself today?",
 ];
 
-const EMOTION_ICONS = {
+const EMOTION_ICONS: Record<string, string> = {
   grounded: '🌿',
   radiant: '☀️',
   flowing: '💧',
@@ -35,7 +46,7 @@ export default function JournalScreen() {
   const [selectedEmotion, setSelectedEmotion] = useState('peaceful');
   const [isPrivate, setIsPrivate] = useState(true);
   const [currentPrompt, setCurrentPrompt] = useState(PROMPTS[0]);
-  const [selectedEntry, setSelectedEntry] = useState(null);
+  const [selectedEntry, setSelectedEntry] = useState<JournalEntry | null>(null);
   const [showEntryDetail, setShowEntryDetail] = useState(false);
 
   useEffect(() => {
@@ -75,12 +86,12 @@ export default function JournalScreen() {
     setContent(currentPrompt + '\n\n');
   };
 
-  const handleViewEntry = (entry) => {
+  const handleViewEntry = (entry: JournalEntry) => {
     setSelectedEntry(entry);
     setShowEntryDetail(true);
   };
 
-  const pastEntries = journalEntries.slice(0, 3);
+  const pastEntries = (journalEntries as JournalEntry[]).slice(0, 3);
 
   return (
     <ScreenContainer className="p-0">
@@ -274,12 +285,12 @@ export default function JournalScreen() {
           </View>
 
           <Text className="text-sm mb-4" style={{ fontFamily: 'Quicksand', color: colors.muted }}>
-            {selectedEntry?.date} • {selectedEntry?.time} • {EMOTION_ICONS[selectedEntry?.emotion]}
+            {selectedEntry?.date} • {selectedEntry?.time} • {selectedEntry?.emotion ? EMOTION_ICONS[selectedEntry.emotion] : '💭'}
           </Text>
 
           <ScrollView className="flex-1 mb-4">
             <Text style={{ fontFamily: 'Quicksand', color: colors.foreground, lineHeight: 24 }}>
-              {selectedEntry?.content}
+              {selectedEntry?.content || ''}
             </Text>
           </ScrollView>
 

@@ -38,7 +38,7 @@ interface WellnessContextType {
   addSessionMessage: (role: 'user' | 'assistant', content: string) => Promise<void>;
   addMoodEntry: (emotion: string, intensity: number, note?: string) => Promise<void>;
   getTodayMood: () => MoodEntry | undefined;
-  addJournalEntry: (content: string, emotion?: string, isPrivate?: boolean) => Promise<void>;
+  addJournalEntry: (entry: { id: string; title: string; content: string; emotion: string; isPrivate: boolean; timestamp: string; date: string; time: string }) => Promise<void>;
   getSessionHistory: () => Session[];
   getMoodTrend: (days: number) => MoodEntry[];
 }
@@ -156,14 +156,14 @@ export function WellnessProvider({ children }: { children: ReactNode }) {
     return moodEntries.find((e) => e.date === today);
   };
 
-  const addJournalEntry = async (content: string, emotion?: string, isPrivate = true) => {
+  const addJournalEntry = async (entry: { id: string; title: string; content: string; emotion: string; isPrivate: boolean; timestamp: string; date: string; time: string }) => {
     try {
       const newEntry: JournalEntry = {
-        id: `journal_${Date.now()}`,
-        date: new Date().toISOString(),
-        content,
-        emotion,
-        isPrivate,
+        id: entry.id,
+        date: entry.date,
+        content: entry.content,
+        emotion: entry.emotion,
+        isPrivate: entry.isPrivate,
       };
 
       const updatedEntries = [...journalEntries, newEntry];
